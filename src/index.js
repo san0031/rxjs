@@ -1,11 +1,10 @@
 import { Observable } from "rxjs";
 
 const observable  = new Observable((subscriber) => {
-subscriber.next('Hello Vidya')
-subscriber.error('Susbcriber error function called')
-subscriber.complete()
-subscriber.next('After complete calll')
+subscriber.next('test')
 })
+
+console.log('before')
 
 observable.subscribe({
     next: (value) => {
@@ -19,3 +18,4 @@ observable.subscribe({
     }
 })
 
+console.log('after')

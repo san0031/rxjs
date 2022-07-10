@@ -11176,11 +11176,9 @@ var _zipWith = require("./internal/operators/zipWith");
 var _rxjs = require("rxjs");
 
 var observable = new _rxjs.Observable(function (subscriber) {
-  subscriber.next('Hello Vidya');
-  subscriber.error('Susbcriber error function called');
-  subscriber.complete();
-  subscriber.next('After complete calll');
+  subscriber.next('test');
 });
+console.log('before');
 observable.subscribe({
   next: function next(value) {
     console.log(value);
@@ -11192,6 +11190,7 @@ observable.subscribe({
     console.error(err);
   }
 });
+console.log('after');
 },{"rxjs":"../node_modules/rxjs/dist/esm5/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
