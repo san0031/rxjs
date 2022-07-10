@@ -11176,7 +11176,14 @@ var _zipWith = require("./internal/operators/zipWith");
 var _rxjs = require("rxjs");
 
 var observable = new _rxjs.Observable(function (subscriber) {
-  subscriber.next('test');
+  var id = setInterval(function () {
+    subscriber.next('test');
+    console.log('leak');
+  }, 1000);
+  subscriber.complete();
+  return function () {
+    clearInterval(id);
+  };
 });
 console.log('before');
 observable.subscribe({
