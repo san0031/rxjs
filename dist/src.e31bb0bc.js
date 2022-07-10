@@ -11175,7 +11175,7 @@ var _zipWith = require("./internal/operators/zipWith");
 
 var _rxjs = require("rxjs");
 
-var observable = new _rxjs.timer(0, 1000);
+var observable = new _rxjs.fromEvent(document, 'click');
 var subscription = observable.subscribe(console.log);
 },{"rxjs":"../node_modules/rxjs/dist/esm5/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
