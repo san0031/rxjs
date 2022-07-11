@@ -1,13 +1,13 @@
-import { fromEvent} from "rxjs";
+import { fromEvent,interval} from "rxjs";
 
-import { map} from  "rxjs/operators"
+import { map,mergeMap} from  "rxjs/operators"
 import {ajax } from "rxjs/ajax"
 
 const button = document.querySelector('#btn')
 const observable  =fromEvent(
 button, 'click'
 ).pipe(
-    map(() => {
+    mergeMap(() => {
         return ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1')
     })
 )
@@ -18,7 +18,7 @@ button, 'click'
 
 const subscription=observable.subscribe({
     next(value){
-        value.subscribe(console.log)
+        console.log(value)
     },
     complete() {
         console.log('complete')

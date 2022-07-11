@@ -12647,7 +12647,7 @@ var _operators = require("rxjs/operators");
 var _ajax = require("rxjs/ajax");
 
 var button = document.querySelector('#btn');
-var observable = (0, _rxjs.fromEvent)(button, 'click').pipe((0, _operators.map)(function () {
+var observable = (0, _rxjs.fromEvent)(button, 'click').pipe((0, _operators.mergeMap)(function () {
   return _ajax.ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1');
 })); // const numbersWithSymbol = observable.pipe(
 //     map((value) => `$${value}`)
@@ -12655,7 +12655,7 @@ var observable = (0, _rxjs.fromEvent)(button, 'click').pipe((0, _operators.map)(
 
 var subscription = observable.subscribe({
   next: function next(value) {
-    value.subscribe(console.log);
+    console.log(value);
   },
   complete: function complete() {
     console.log('complete');
