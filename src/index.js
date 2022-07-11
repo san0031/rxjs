@@ -4,7 +4,13 @@ import { map ,pluck,filter,reduce,take,scan,tap} from  "rxjs/operators"
 
 const observable  = interval(500).pipe(
     take(5),
-    tap(console.log),
+    tap({
+        next(val) {
+            console.log(val)
+        }
+    }
+        
+    ),
     reduce(
     //    scan(
         (acc, val) => acc+ val ,

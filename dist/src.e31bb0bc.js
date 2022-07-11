@@ -12127,7 +12127,11 @@ var _rxjs = require("rxjs");
 
 var _operators = require("rxjs/operators");
 
-var observable = (0, _rxjs.interval)(500).pipe((0, _operators.take)(5), (0, _operators.tap)(console.log), (0, _operators.reduce)( //    scan(
+var observable = (0, _rxjs.interval)(500).pipe((0, _operators.take)(5), (0, _operators.tap)({
+  next: function next(val) {
+    console.log(val);
+  }
+}), (0, _operators.reduce)( //    scan(
 function (acc, val) {
   return acc + val;
 }, 0)); // const numbersWithSymbol = observable.pipe(
