@@ -12647,7 +12647,7 @@ var _operators = require("rxjs/operators");
 var _ajax = require("rxjs/ajax");
 
 var button = document.querySelector('#btn');
-var observable = (0, _rxjs.fromEvent)(button, 'click').pipe((0, _operators.concatMap)(function () {
+var observable = (0, _rxjs.fromEvent)(button, 'click').pipe((0, _operators.exhaustMap)(function () {
   return _ajax.ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1').pipe((0, _operators.take)(5), (0, _operators.tap)({
     complete: function complete() {
       console.log('Inner observable completed');
