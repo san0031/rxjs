@@ -1,11 +1,12 @@
 import { interval } from "rxjs";
 
-import { map ,pluck,filter,reduce,take,scan} from  "rxjs/operators"
+import { map ,pluck,filter,reduce,take,scan,tap} from  "rxjs/operators"
 
 const observable  = interval(500).pipe(
     take(5),
-    //reduce(
-        scan(
+    tap(console.log),
+    reduce(
+    //    scan(
         (acc, val) => acc+ val ,
         0 
     )
