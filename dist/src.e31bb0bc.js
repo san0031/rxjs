@@ -12647,8 +12647,12 @@ var _operators = require("rxjs/operators");
 var _ajax = require("rxjs/ajax");
 
 var button = document.querySelector('#btn');
-var observable = (0, _rxjs.fromEvent)(button, 'click').pipe((0, _operators.mergeMap)(function () {
-  return (0, _rxjs.interval)(1000).pipe((0, _operators.tap)(console.log), (0, _operators.take)(5));
+var observable = (0, _rxjs.fromEvent)(button, 'click').pipe((0, _operators.switchMap)(function () {
+  return _ajax.ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1').pipe((0, _operators.take)(5), (0, _operators.tap)({
+    complete: function complete() {
+      console.log('Inner observable completed');
+    }
+  }));
 }) //take(5)
 ); // const numbersWithSymbol = observable.pipe(
 //     map((value) => `$${value}`)
