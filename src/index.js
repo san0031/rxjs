@@ -1,8 +1,13 @@
-import { of, from } from "rxjs";
+import { of, from, fromEvent } from "rxjs";
 
-import { map } from  "rxjs/operators"
+import { map ,pluck} from  "rxjs/operators"
 
-const observable  = of(1,2,3,4,5)
+const observable  = fromEvent(
+    document,'keydown'
+).pipe(
+    //map(event => event.code)
+    pluck('code')
+)
 
 // const numbersWithSymbol = observable.pipe(
 //     map((value) => `$${value}`)

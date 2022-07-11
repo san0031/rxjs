@@ -12127,7 +12127,8 @@ var _rxjs = require("rxjs");
 
 var _operators = require("rxjs/operators");
 
-var observable = (0, _rxjs.of)(1, 2, 3, 4, 5); // const numbersWithSymbol = observable.pipe(
+var observable = (0, _rxjs.fromEvent)(document, 'keydown').pipe( //map(event => event.code)
+(0, _operators.pluck)('code')); // const numbersWithSymbol = observable.pipe(
 //     map((value) => `$${value}`)
 // )
 
