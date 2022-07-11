@@ -1,16 +1,13 @@
 import { of, from, fromEvent } from "rxjs";
 
-import { map ,pluck,filter} from  "rxjs/operators"
+import { map ,pluck,filter,reduce} from  "rxjs/operators"
 
-const observable  = fromEvent(
-    document,'keydown'
-).pipe(
-    //map(event => event.code)
-    // pluck('code'),
-    // filter(code => code === 'Space')
-    map(event => {
-        return  event.code === 'Space' ? event.code : null
-     })
+const observable  = of(1,2,3,4,5).pipe(
+
+    reduce(
+        (acc, val) => acc+ val ,
+        0 
+    )
 )
 
 // const numbersWithSymbol = observable.pipe(
